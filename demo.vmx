@@ -1,0 +1,26 @@
+#
+# This shows you how to start VMs that don't use UEFI on Fling 1.1
+#
+# For clarity, this is a very basic VM with no I/O.
+#
+.encoding = "UTF-8"
+config.version = "8"
+virtualHW.version = "14"
+virtualHW.isa = "arm64"
+displayName = "UEFI-less VM"
+guestOS = "other-64"
+numVCPUs = 1
+memsize = "128"
+firmware = "efi"
+directBoot.linux = "Image.bin"
+directBoot.cmdline = "bootargs for Image.bin"
+#
+# At this time, a proper sized (FDT-header aligned) initrd
+# always needs to be provided, even if it's not used.
+#
+directBoot.initrd = "dummy.initrd"
+serial0.present = TRUE
+serial0.fileType = "file"
+serial0.fileName = "serial.0.log"
+answer.msg.serial.file.open = "Append"
+chipset.version = "1"
